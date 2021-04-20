@@ -1,3 +1,21 @@
+from google.colab import drive
+drive.mount('/content/drive')
+!pip install numpy
+!pip install click
+!pip install keras
+!pip install tensorflow
+!pip install scipy
+!pip install h5py
+!pip install tqdm
+!pip install matplotlib
+!pip install pydot
+!pip install graphviz
+!pip install keras_applications==1.0.4
+!pip install keras_preprocessing==1.0.2
+!pip install tensorflow as tf
+
+
+
 import os
 import dill
 import click
