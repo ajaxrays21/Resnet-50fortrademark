@@ -108,7 +108,7 @@ def train(learning_rate, batch_size, num_epochs, save_every, tensorboard_vis, pr
     logging.info('evaluating model')
     preds = resnet50.evaluate_generator(
         test_generator,
-        steps=2200//batch_size,
+        steps=vpt//batch_size,
         verbose=1
     )
     logging.info('test loss: {:.4f} - test acc: {:.4f}'.format(preds[0], preds[1]))
