@@ -7,7 +7,7 @@ import numpy as np
 import keras.backend as K
 
 from model import create_model
-
+path1='/content/drive/MyDrive/Dataset/Dataset_For_Deep_Learning/'
 K.set_image_data_format('channels_last')
 
 """
@@ -29,7 +29,7 @@ Train Model [optional args]
 @click.option(
     '-ne', 
     '--num-epochs', 
-    default=5, 
+    default=10, 
     help='Number of epochs for training model'
 )
 @click.option(
@@ -55,8 +55,7 @@ def train(learning_rate, batch_size, num_epochs, save_every, tensorboard_vis, pr
 
     datagen = keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
 
-    get_gen = lambda x: datagen.flow_from_directory(
-        '/content/drive/MyDrive/Dataset/Dataset for first keras/temp1 all files/{}'.format(x),
+    get_gen = lambda x: datagen.flow_from_directory(path1+'{}'.format(x),
         target_size=(64, 64),
         batch_size=batch_size,
         class_mode='categorical'
@@ -64,11 +63,11 @@ def train(learning_rate, batch_size, num_epochs, save_every, tensorboard_vis, pr
 
     # generator objects
     train_generator = get_gen('train')
-    cpt = sum([len(files) for r, d, files in os.walk("/content/drive/MyDrive/Dataset/Dataset for first keras/temp1 all files/train")])
+    cpt = sum([len(files) for r, d, files in os.walk(path1+"train")])
     #res = get_gen('train').split(' ')[2-1]
     print(cpt)
     val_generator = get_gen('val')
-    vpt = sum([len(files) for r, d, files in os.walk("/content/drive/MyDrive/Dataset/Dataset for first keras/temp1 all files/val")])
+    vpt = sum([len(files) for r, d, files in os.walk(path1+"val")])
     print(vpt)
     test_generator = get_gen('test')
 
@@ -79,7 +78,7 @@ def train(learning_rate, batch_size, num_epochs, save_every, tensorboard_vis, pr
     else:
         # create model
         logging.info('creating model')
-        resnet50 = create_model(input_shape=(64, 64, 3), classes=6)
+        resnet50 = create_model(input_shape=(64, 64, 3), classes=107)
     
     optimizer = keras.optimizers.Adam(learning_rate)
     resnet50.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
