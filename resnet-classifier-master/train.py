@@ -23,7 +23,7 @@ Train Model [optional args]
 @click.option(
     '-bz',
     '--batch-size',
-    default=32,
+    default=2,
     help='Batch size of minibatches to use during training'
 )
 @click.option(
