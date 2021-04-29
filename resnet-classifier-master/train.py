@@ -5,7 +5,7 @@ import logging
 import keras
 import numpy as np
 import keras.backend as K
-
+#this is not for all
 from model import create_model
 path1='/content/drive/MyDrive/Dataset/Dataset_For_Deep_Learning/'
 K.set_image_data_format('channels_last')
@@ -23,13 +23,13 @@ Train Model [optional args]
 @click.option(
     '-bz',
     '--batch-size',
-    default=2,
+    default=32,
     help='Batch size of minibatches to use during training'
 )
 @click.option(
     '-ne', 
     '--num-epochs', 
-    default=10, 
+    default=2, 
     help='Number of epochs for training model'
 )
 @click.option(
