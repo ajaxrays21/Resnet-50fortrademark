@@ -19,7 +19,7 @@ resolution = 128
 @click.option(
     '-ds', 
     '--dataset-path', 
-    default='/content/drive/MyDrive/Dataset/Dataset for first keras/temp1 all files', 
+    default='/content/drive/MyDrive/Dataset/Dataset_For_Deep_Learning', 
     type=click.Path(exists=True), 
     help='Path for your Image Dataset'
 )
